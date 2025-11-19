@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do List</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .form-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input, textarea {
+      width: 250px;
+      padding: 8px;
+      margin: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 8px 12px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+      background-color: #007bff;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .task {
+      background: #fff;
+      padding: 15px;
+      margin: 10px auto;
+      border-radius: 8px;
+      width: 90%;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>To-Do List</h1>
+
+  <div class="form-container">
+    <input type="text" id="taskTitle" placeholder="Task Title" />
+    <textarea id="taskDesc" placeholder="Task Description"></textarea><br>
+    <button id="addTaskBtn">Add Task</button>
+  </div>
+
+  <div id="taskList"></div>
+
+  <script>
+    const addTaskBtn = document.getElementById('addTaskBtn');
+    const taskList = document.getElementById('taskList');
+
+    addTaskBtn.addEventListener('click', () => {
+      const title = document.getElementById('taskTitle').value.trim();
+      const desc = document.getElementById('taskDesc').value.trim();
+
+      if (!title) {
+        alert('Please enter a task title!');
+        return;
+      }
+
+      const taskDiv = document.createElement('div');
+      taskDiv.className = 'task';
+
+      const titleEl = document.createElement('h3');
+      titleEl.textContent = title;
+
+      const descEl = document.createElement('p');
+      descEl.textContent = desc;
+
+      const completeBtn = document.createElement('button');
+      completeBtn.textContent = 'Mark as Completed';
+
+      const editBtn = document.createElement('button');
+      editBtn.textContent = 'Edit';
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = 'Delete';
+
+      // ✅ Mark as completed/incomplete
+      completeBtn.addEventListener('click', () => {
+        titleEl.classList.toggle('completed');
+        descEl.classList.toggle('completed');
+        completeBtn.textContent =
+          completeBtn.textContent === 'Mark as Completed'
+            ? 'Mark as Incomplete'
+            : 'Mark as Completed';
+      });
+
+      // 🗑️ Delete task
+      deleteBtn.addEventListener('click', () => {
+        taskList.removeChild(taskDiv);
+      });
+
+      // ✏️ Edit task
+      editBtn.addEventListener('click', () => {
+        if (editBtn.textContent === 'Edit') {
+          const titleInput = document.createElement('input');
+          titleInput.value = titleEl.textContent;
+
+          const descInput = document.createElement('textarea');
+          descInput.value = descEl.textContent;
+
+          taskDiv.replaceChild(titleInput, titleEl);
+          taskDiv.replaceChild(descInput, descEl);
+
+          editBtn.textContent = 'Save';
+        } else {
+          const newTitle = taskDiv.querySelector('input').value;
+          const newDesc = taskDiv.querySelector('textarea').value;
+
+          titleEl.textContent = newTitle;
+          descEl.textContent = newDesc;
+
+          taskDiv.replaceChild(titleEl, taskDiv.querySelector('input'));
+          taskDiv.replaceChild(descEl, taskDiv.querySelector('textarea'));
+
+          editBtn.textContent = 'Edit';
+        }
+      });
+
+      taskDiv.appendChild(titleEl);
+      taskDiv.appendChild(descEl);
+      taskDiv.appendChild(completeBtn);
+      taskDiv.appendChild(editBtn);
+      taskDiv.appendChild(deleteBtn);
+      taskList.appendChild(taskDiv);
+
+      // clear input fields
+      document.getElementById('taskTitle').value = '';
+      document.getElementById('taskDesc').value = '';
+    });
+  </script>
+
+</body>
+</html>
