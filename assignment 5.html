@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All JavaScript Tasks</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    section {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    pre {
+      background: #eef3f9;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript Practice Programs</h1>
+
+  <!-- i -->
+  <section>
+    <h2>i. Arithmetic Operations</h2>
+    <button onclick="task1()">Run Task 1</button>
+    <pre id="output1"></pre>
+  </section>
+
+  <!-- ii -->
+  <section>
+    <h2>ii. Array Operations</h2>
+    <button onclick="task2()">Run Task 2</button>
+    <pre id="output2"></pre>
+  </section>
+
+  <!-- iii -->
+  <section>
+    <h2>iii. Form Validation</h2>
+    <form id="userForm" onsubmit="return validateForm()">
+      Name: <input type="text" id="name"><br><br>
+      Email: <input type="text" id="email"><br><br>
+      Age: <input type="number" id="age"><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </section>
+
+  <!-- iv -->
+  <section>
+    <h2>iv. Student Object</h2>
+    <button onclick="task4()">Run Task 4</button>
+    <pre id="output4"></pre>
+  </section>
+
+  <!-- v -->
+  <section>
+    <h2>v. Array Methods (map, filter, reduce)</h2>
+    <button onclick="task5()">Run Task 5</button>
+    <pre id="output5"></pre>
+  </section>
+
+  <script>
+    // Task 1: Arithmetic Operations
+    function task1() {
+      let num1 = parseFloat(prompt("Enter first number:"));
+      let num2 = parseFloat(prompt("Enter second number:"));
+
+      let sum = num1 + num2;
+      let diff = num1 - num2;
+      let prod = num1 * num2;
+      let quo = num1 / num2;
+
+      document.getElementById("output1").textContent =
+        `Sum: ${sum}\nDifference: ${diff}\nProduct: ${prod}\nQuotient: ${quo}`;
+    }
+
+    // Task 2: Array Operations
+    function task2() {
+      let numbers = [25, 12, 89, 4, 56];
+      let largest = Math.max(...numbers);
+      let smallest = Math.min(...numbers);
+      let ascending = [...numbers].sort((a, b) => a - b);
+      let descending = [...numbers].sort((a, b) => b - a);
+
+      document.getElementById("output2").textContent =
+        `Numbers: ${numbers}\nLargest: ${largest}\nSmallest: ${smallest}\nAscending: ${ascending}\nDescending: ${descending}`;
+    }
+
+    // Task 3: Form Validation
+    function validateForm() {
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let age = parseInt(document.getElementById("age").value);
+      let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+      if (name === "") {
+        alert("Name cannot be empty!");
+        return false;
+      }
+      if (!emailPattern.test(email)) {
+        alert("Please enter a valid email!");
+        return false;
+      }
+      if (isNaN(age) || age < 18 || age > 100) {
+        alert("Age must be between 18 and 100!");
+        return false;
+      }
+
+      alert("Form submitted successfully!");
+      return false; // prevents page reload
+    }
+
+    // Task 4: Student Object
+    function task4() {
+      let student = { name: "Riya", age: 20, grade: "A" };
+      student.class = "12th";
+      student.grade = "A+";
+
+      let details = "";
+      for (let key in student) {
+        details += `${key}: ${student[key]}\n`;
+      }
+
+      document.getElementById("output4").textContent = details;
+    }
+
+    // Task 5: Array Methods (map, filter, reduce)
+    function task5() {
+      let arr = [1, 2, 3, 4, 5, 6];
+      let even = arr.filter(num => num % 2 === 0);
+      let doubled = even.map(num => num * 2);
+      let sum = doubled.reduce((acc, val) => acc + val, 0);
+
+      document.getElementById("output5").textContent =
+        `Original Array: ${arr}\nEven Numbers: ${even}\nDoubled: ${doubled}\nSum: ${sum}`;
+    }
+  </script>
+
+</body>
+</html>
+
