@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dream Travels - Full Website</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+        }
+
+        header {
+            background: #0284c7;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav {
+            background: #0369a1;
+            text-align: center;
+            padding: 12px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            padding: 40px;
+            width: 80%;
+            margin: auto;
+            background: white;
+            margin-top: 30px;
+            border-radius: 10px;
+        }
+
+        .banner {
+            width: 100%;
+            height: 330px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #555;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        form input, form select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 12px;
+        }
+
+        form button {
+            background: #0284c7;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .gallery img {
+            width: 30%;
+            margin: 10px;
+            border-radius: 10px;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Dream Travels – Complete Website</h1>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#packages">Packages</a>
+    <a href="#booking">Booking</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact Us</a>
+</nav>
+
+<!-- HOME SECTION -->
+<section id="home">
+    <h2>Welcome to Dream Travels</h2>
+    <p>Explore the world with our most affordable and exciting tour packages.</p>
+
+    <img src="images/banner.jpg" alt="Banner" class="banner">
+
+    <h3>Why Choose Us?</h3>
+    <ul>
+        <li>Affordable Tour Packages</li>
+        <li>24/7 Customer Support</li>
+        <li>Certified Tour Guides</li>
+        <li>Safe and Comfortable Travel</li>
+    </ul>
+</section>
+
+<!-- PACKAGES SECTION -->
+<section id="packages">
+    <h2>Our Tour Packages</h2>
+
+    <table>
+        <tr>
+            <th>Destination</th>
+            <th>Price</th>
+            <th>Duration</th>
+            <th>Details</th>
+        </tr>
+
+        <tr>
+            <td>Goa</td>
+            <td>₹15,000</td>
+            <td>3 Days</td>
+            <td>Hotel + Breakfast + Beach Visit</td>
+        </tr>
+
+        <tr>
+            <td>Kerala</td>
+            <td>₹25,000</td>
+            <td>5 Days</td>
+            <td>Houseboat + Hills + Waterfalls</td>
+        </tr>
+
+        <tr>
+            <td>Dubai</td>
+            <td>₹55,000</td>
+            <td>4 Days</td>
+            <td>Burj Khalifa + Desert Safari</td>
+        </tr>
+
+        <tr>
+            <td>Manali</td>
+            <td>₹18,000</td>
+            <td>4 Days</td>
+            <td>Snow Activities + Camping</td>
+        </tr>
+    </table>
+</section>
+
+<!-- BOOKING SECTION -->
+<section id="booking">
+    <h2>Book Your Trip</h2>
+
+    <form>
+        <label>Your Name:</label>
+        <input type="text" required>
+
+        <label>Select Destination:</label>
+        <select>
+            <option>Goa</option>
+            <option>Kerala</option>
+            <option>Dubai</option>
+            <option>Manali</option>
+        </select>
+
+        <label>Start Date:</label>
+        <input type="date">
+
+        <label>End Date:</label>
+        <input type="date">
+
+        <label>Select Package:</label>
+        <select>
+            <option>Standard</option>
+            <option>Premium</option>
+            <option>Luxury</option>
+        </select>
+
+        <button type="submit">Submit Booking</button>
+    </form>
+</section>
+
+<!-- GALLERY SECTION -->
+<section id="gallery" class="gallery">
+    <h2>Travel Gallery</h2>
+
+    <img src="images/goa.jpg" alt="Goa">
+    <img src="images/kerala.jpg" alt="Kerala">
+    <img src="images/dubai.jpg" alt="Dubai">
+    <img src="images/manali.jpg" alt="Manali">
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact">
+    <h2>Contact Us</h2>
+
+    <p><strong>Email:</strong> support@dreamtravels.com</p>
+    <p><strong>Phone:</strong> +91 98219 42319</p>
+
+    <h3>Follow us on:</h3>
+    <p>Instagram | Facebook | Twitter</p>
+</section>
+
+<footer>
+    © 2025 Dream Travels – All Rights Reserved
+</footer>
+
+</body>
+</html>
